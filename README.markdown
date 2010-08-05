@@ -1,0 +1,3 @@
+Welcome to my Application!
+
+This is based off the railstutorial.org book. And when I say based I mean copied extensively. One could almost say plagiarised....
