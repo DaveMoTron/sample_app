@@ -36,6 +36,13 @@ module SampleApp
     #   g.template_engine :erb
     #   g.test_framework  :test_unit, :fixture => true
     # end
+    
+    if Rails.env.test?
+          initializer :after => :initialize_dependency_mechanism do
+            # Work around initializer in railties/lib/rails/application/bootstrap.rb
+            ActiveSupport::Dependencies.mechanism = :load
+          end
+        end
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
