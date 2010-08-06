@@ -22,16 +22,16 @@ end
     
   end
 
-  describe "GET 'content'" do
+  describe "GET 'contact'" do
     it "should be successful" do
-      get 'content'
+      get 'contact'
       response.should be_success
     end
     
      it 'should have the right title' do
-        get 'content'
+        get 'contact'
         response.should have_selector("title",
-                  :content => @base_title + "Content")
+                  :content => @base_title + "Contact")
       end
     
   end
