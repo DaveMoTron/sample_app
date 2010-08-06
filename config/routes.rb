@@ -4,6 +4,8 @@ SampleApp::Application.routes.draw do |map|
   get "pages/content"
   
   get "pages/about"
+  
+  get "pages/help"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
