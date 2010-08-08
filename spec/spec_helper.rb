@@ -23,6 +23,7 @@ Spork.prefork do
     # config.mock_with :mocha
     # config.mock_with :flexmock
     # config.mock_with :rr
+    
     config.mock_with :rspec
 
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -36,6 +37,10 @@ Spork.prefork do
     # Emulate initializer set_clear_dependencies_hook in 
     # railties/lib/rails/application/bootstrap.rb
     ActiveSupport::Dependencies.clear
+    
+    def test_sign_in(user)
+      controller.current_user = user
+    end
   end
 end
 
