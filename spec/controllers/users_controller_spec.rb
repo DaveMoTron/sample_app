@@ -83,6 +83,15 @@ describe UsersController do
       get 'new'
       response.should have_selector("title", :content => "Sign up")
     end
+    
+    it "should show the user's microposts" do
+      mp1 = Factory(:micropost, :user => @user, :content => "blah blah")
+      mp2 = Factory(:micropost, :user => @user, :content => "blergh blah")
+      get :show, :id => @user
+      response.should have_selector("span.content", :content => mp1.content)
+      response.should have_selector("span.content", :content => mp2.content)
+    end
+    
   end
     
     describe "GET 'new'" do

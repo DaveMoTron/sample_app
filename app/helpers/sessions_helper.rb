@@ -2,7 +2,7 @@ module SessionsHelper
   
   def sign_in(user)
     cookies.permanent.signed[:remember_token] = [user.id, user.salt]
-    current_user = user
+    self.current_user = user
   end
   
   def current_user=(user)
@@ -22,9 +22,16 @@ module SessionsHelper
     self.current_user = nil
   end
   
+  def authenticate
+    deny_access unless signed_in?
+  end
   
-  
-  
+  def deny_access
+    store_location
+    redirect_to signin_path, :notice => "Please sign in to view this page"
+  end
+
+
   
   private
   
