@@ -62,6 +62,5 @@ describe "Users" do
         controller.should_not be_signed_in
       end
     end
-    
   end
 end

@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe SessionsController do
+  render_views
 
   describe "GET 'new'" do
     
@@ -31,7 +32,9 @@ describe SessionsController do
       
       it "should have the right title" do
         post :create, :session => @attr
-        response.should have_selector("title", :content => "Sign In")
+        response.should have_selector("title") do |title|
+          title.text.should =~ /Sign in/
+        end
       end
     
     end
@@ -62,7 +65,7 @@ describe SessionsController do
     
     it "should sign a user out" do
       test_sign_in(Factory(:user))
-      delete :destroy
+      delete :destroy 
       controller.should_not be_signed_in
       response.should redirect_to(root_path)
     end
